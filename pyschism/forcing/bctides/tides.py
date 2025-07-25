@@ -13,7 +13,7 @@ from pyschism.forcing.bctides.hamtide import HAMTIDE
 _logger = logging.getLogger(__name__)
 
 MAJOR_CONSTITUENTS = ('Q1', 'O1', 'P1', 'K1', 'N2', 'M2', 'S2', 'K2')
-MINOR_CONSTITUENTS = ('Mm', 'Mf', 'M4', 'MN4', 'MS4', '2N2', 'S1')
+MINOR_CONSTITUENTS = ('Ssa', 'Sa','Mm', 'Mf', 'M4', 'MN4', 'MS4', '2N2', 'S1')
 ALL_CONSTITUENTS = MAJOR_CONSTITUENTS + MINOR_CONSTITUENTS
 
 
@@ -619,6 +619,9 @@ class Tides:
         'Z0':      0}
 
     tidal_potential_amplitudes = {
+        # https://austides.com/wp-content/uploads/2014/06/Kowalik_Luick_2011.pdf
+        # doi:10.1111/j.1365-246X.1973.tb03420.x.
+        # https://pytmd.readthedocs.io/en/latest/background/Constituent-Table.html
         'M2': 0.242334,
         'S2': 0.112841,
         'N2': 0.046398,
@@ -627,6 +630,11 @@ class Tides:
         'O1': 0.100514,
         'P1': 0.046843,
         'Q1': 0.019256,
+        'Ssa':0.019446,
+        'Sa': 0.003104,
+        'Msf':0.003681,
+        'Mf': 0.041742,
+        'Mm': 0.022026,
         'Z0': 0}
 
     tidal_species_type = {
@@ -638,6 +646,11 @@ class Tides:
         'O1': 1,
         'P1': 1,
         'Q1': 1,
+        'Ssa':0,
+        'Sa': 0,
+        'Msf':0,
+        'Mf': 0,
+        'Mm': 0,
         'Z0': 0}
 
     @property

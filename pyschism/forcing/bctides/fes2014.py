@@ -63,7 +63,7 @@ class FES2014(TidalDataProvider):
     @property
     def constituents(self):
         return ['M2', 'S2', 'N2', 'K2', 'K1', 'O1', 'P1',
-                'Q1', 'Mm', 'Mf', 'M4', 'MN4', 'MS4', '2N2', 'S1']
+                'Q1', 'Mm', 'Mf', 'Ssa', 'Sa', 'M4', 'MN4', 'MS4', '2N2', 'S1']
         if not hasattr(self, '_constituents'):
             files = glob.glob(appdirs.user_data_dir('fes2014') + '/ocean_tide_extrapolated/*.nc')
             self._constituents = [f.split('/')[-1].split('.')[0] for f in files]
