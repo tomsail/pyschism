@@ -16,7 +16,6 @@ def get_earth_tidal_potential(start_date: datetime, rnday: float, constituents='
         
 def write_bctides_in(filename: str, start_date: datetime, rnday: float, cut_off_depth=50.0, const = "all"):
     tidal_data = get_earth_tidal_potential(start_date, rnday, const)
-    print(start_date, rnday, const)
     with open(filename, 'w') as f:
         f.write(f"!{start_date.strftime('%Y-%m-%d %H:%M:%S')} UTC\n")
         f.write(f"{len(tidal_data)} {cut_off_depth:.1f} !number of earth tidal potential, cut-off depth for applying tidal potential\n")
@@ -24,7 +23,8 @@ def write_bctides_in(filename: str, start_date: datetime, rnday: float, cut_off_
             f.write(f"{entry[0]}\n")
             species, amp, freq, nodal, greenwich = entry[1:]
             f.write(f" {species} {amp:.6f} {freq:.8E} {nodal:.5f} {greenwich:.4f}\n")
-        f.write(f"{len(tidal_data)} !nbfr\n")
+        f.write(f"0 !nbfr\n")
+        f.write(f"0 !nope\n")
 
 runs = pd.period_range("2021-11-30 0:0:0",periods=40,freq='30D')
 
